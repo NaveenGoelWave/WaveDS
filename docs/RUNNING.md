@@ -33,7 +33,35 @@ npm run dev
 
 Open http://localhost:5173. Requests to `/api` are proxied to the backend.
 
+## Sign up, login and JWT
+
+Every `/api/v1/**` endpoint except `POST /api/v1/auth/signup` and `POST /api/v1/auth/login` needs
+an `Authorization: Bearer <token>` header. The frontend adds it automatically after you sign in.
+
+- **First account** created becomes `ADMIN`; every later sign-up is a `USER`.
+- Tokens last 60 minutes (`JWT_EXPIRATION_MINUTES`). After that the app sends you back to the login page.
+- Passwords: 8 to 72 characters with at least one letter and one number, stored as BCrypt hashes.
+
+Settings (environment variables):
+
+| Variable | Default | Purpose |
+|---|---|---|
+| `JWT_SECRET` | dev-only value in `application.yml` | Signing key, 32+ characters. **Must be set for any shared or production environment.** |
+| `JWT_EXPIRATION_MINUTES` | `60` | Token lifetime |
+| `SIGNUP_ENABLED` | `true` | Set `false` to stop new sign-ups once your team has accounts |
+
+Try the API from a terminal:
+
+```bash
+TOKEN=$(curl -s -X POST http://localhost:8080/api/v1/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"you@example.com","password":"YourPassword1"}' | sed 's/.*"token":"\([^"]*\)".*/\1/')
+curl -H "Authorization: Bearer $TOKEN" http://localhost:8080/api/v1/customers
+```
+
 ## Adding dropdown values (Customer Type, Company)
+
+These endpoints now need a token as well. Add `-H "Authorization: Bearer $TOKEN"` to the command below.
 
 These live in the database, not in code:
 

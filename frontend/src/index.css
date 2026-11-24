@@ -69,3 +69,19 @@ button.link.danger { color: var(--danger); }
 @media (max-width: 700px) {
   .grid { grid-template-columns: 1fr; }
 }
+
+/* Top bar user area */
+.topbar-user { margin-left: auto; display: flex; align-items: center; gap: 0.9rem; color: #b8c7da; }
+.topbar-btn { background: transparent; border-color: #4a6283; color: #fff; padding: 0.3rem 0.8rem; }
+.topbar-btn:hover { background: #17365c; }
+
+/* Sign in / sign up */
+.auth-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1.5rem; background: var(--bg); }
+.auth-card { width: 100%; max-width: 400px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; }
+.auth-brand { font-weight: 700; font-size: 1.2rem; color: #0a2540; margin-bottom: 0.25rem; }
+.auth-card h1 { margin-bottom: 1.25rem; }
+.auth-fields { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1rem; }
+.btn.block { width: 100%; }
+.hint { color: var(--muted); font-size: 0.8rem; margin: 0 0 1rem; }
+.auth-switch { text-align: center; color: var(--muted); font-size: 0.9rem; margin: 1rem 0 0; }
+.auth-switch a { color: var(--primary); }

@@ -17,12 +17,16 @@ import com.wave.ds.customer.service.CustomerService;
 import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+// Security filters are switched off here: this class tests controller behaviour only.
+// Token checks are covered by SecurityIntegrationTest.
 @WebMvcTest(CustomerController.class)
+@AutoConfigureMockMvc(addFilters = false)
 class CustomerControllerTest {
 
     @Autowired

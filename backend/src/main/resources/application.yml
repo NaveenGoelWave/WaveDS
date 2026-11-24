@@ -24,6 +24,15 @@ spring:
   jackson:
     default-property-inclusion: always
 
+app:
+  auth:
+    # HS256 signing key, at least 32 characters. The default below is for local development ONLY.
+    # In any shared or production environment, set the JWT_SECRET environment variable.
+    jwt-secret: ${JWT_SECRET:dev-only-secret-change-me-in-production-0123456789}
+    jwt-expiration-minutes: ${JWT_EXPIRATION_MINUTES:60}
+    # When false, new accounts cannot be created (except the very first one, who becomes ADMIN).
+    signup-enabled: ${SIGNUP_ENABLED:true}
+
 management:
   endpoints:
     web:
