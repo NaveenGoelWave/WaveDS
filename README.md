@@ -69,9 +69,9 @@ Use the provided input data JSON example to create a customer with associated cl
 
 ```json
 {
-    "name": "Sasuke Uchiha",
-    "email": "SasukeUchiha@gmail.com",
-    "address": "Konoha",
+    "name": "Pravar Goel",
+    "email": "pravargoel29@gmail.com",
+    "address": "1207 Willow Ave, Hoboken",
     "cloudServices": [
         {
             "serviceName": "S3",
